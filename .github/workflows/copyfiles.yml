@@ -24,8 +24,8 @@ jobs:
 
       - name: Copy specific files to destination repo
         run: |
-          cp submitted_test.ipa destination-repo/
-          cp entitlements.plist destination-repo/entitlements/
+          cp Remote_Fire_Safety_1.14.0_78.ipa destination-repo/
+          cp entitlements/* destination-repo/entitlements/
           
           cd destination-repo
           git add .
