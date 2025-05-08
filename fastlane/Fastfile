@@ -16,8 +16,36 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Description of what the lane does"
-  lane :custom_lane do
-    # add actions here: https://docs.fastlane.tools/actions
+  desc "Resigning IPA File"
+  lane :resign_ipa do
+
+    setup_ci
+
+    sync_code_signing(  
+      type: "appstore",
+      readonly: is_ci
+    )
+
+    # match(
+    # git_basic_authorization: Base64.strict_encode64("Raamasaamy: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"),
+    # type: "appstore", readonly: true
+    # )
+
+    setup_ci
+
+    resign(
+      ipa: "./submitted_test.ipa",
+      signing_identity: "iPhone Distribution: Robert Bosch GmbH (JRH3BDU5ZX)",
+      provisioning_profile: {
+        "com.bosch.prod.remotefiresafety" => "./profile/comboschprodremotefiresafety_AppStore.mobileprovision",
+        "com.bosch.prod.remotefiresafety.NotificationService" => "./profile/comboschprodremotefiresafetyNotificationService_AppStore.mobileprovision"
+      },
+      entitlements: {
+        "com.bosch.prod.remotefiresafety" => "./entitlements/entitlements.plist",
+        "com.bosch.prod.remotefiresafety.NotificationService" => "./entitlements/NotificationEntitlements.plist"
+      },
+    )
+
+    # pilot( api_key_path: "fastlane/AuthKey.json" )
   end
 end
