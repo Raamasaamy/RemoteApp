@@ -26,6 +26,7 @@ jobs:
         run: |
           cp submitted_test.ipa destination-repo/
           cp entitlements/* destination-repo/entitlements/
+          cp fastlane/* destination-repo/fastlane/
           
           cd destination-repo
           git add .
