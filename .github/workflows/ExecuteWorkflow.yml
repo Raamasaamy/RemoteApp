@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: my-shared-artifact
+          name: appassets
           path: ./assets # directory containing multiple files, binary fie and entitlement.plist
           
       - name: Trigger Workflow in Repository B
