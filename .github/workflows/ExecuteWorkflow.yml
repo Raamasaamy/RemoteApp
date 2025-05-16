@@ -18,6 +18,7 @@ jobs:
           name: app-assets
           path: "$GITHUB_WORKSPACE/assets" # directory containing multiple files, binary fie and entitlement.plist
           run-id: ${{ github.event.workflow_run.id }}
+          retention-days: 1
           
       - name: Trigger Workflow in TestPipe Repository
         run: |
