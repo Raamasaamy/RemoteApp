@@ -14,12 +14,10 @@ jobs:
     steps:
       - name: Trigger Workflow in Repository B
         run: |
-          REPO_OWNER="owner_of_repo_b"
-          REPO_NAME="repo_b_name"
-          WORKFLOW_ID="workflow_b.yml"  # Filename of workflow in repo B
+          REPO_OWNER="Raamasaamy"
+          REPO_NAME="TestPipe"
+          WORKFLOW_ID="CodeSign.yml"  # Filename of workflow in repo B
           GITHUB_TOKEN="${{ secrets.REPO_B_TRIGGER_TOKEN }}"  # Store token in A's secrets
-          INPUT_ENVIRONMENT="staging"
-          INPUT_VERSION="1.2.3"
 
           curl -X POST \
             -H "Accept: application/vnd.github.v3+json" \
@@ -27,8 +25,16 @@ jobs:
             -d '{
               "ref": "main",
               "inputs": {
-                "environment": "'"$INPUT_ENVIRONMENT"'",
-                "version": "'"$INPUT_VERSION"'"
+                "ipa_path": "'"./submitted_test.ipa"'",
+                "certificate_name": "'"iPhone Distribution: Robert Bosch GmbH (JRH3BDU5ZX)"'",
+                "new_bundle_id": "'"com.bosch.prod.remotefiresafety"'",
+                "output_ipa_path": "'"./output.ipa"'",
+                "extension_bundle_id_suffix": "'".NotificationService"'",
+                "entitlements_plist_path": "'"./entitlements/entitlements.plist"'",
+                "extension_entitlements_plist_dir": "'""'",
+                "extension_provisioning_profile_dir": "'""'",
+                "main_app_provisioning_profile_path": "'""'",
               }
             }' \
             "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/workflows/$WORKFLOW_ID/dispatches"
+
