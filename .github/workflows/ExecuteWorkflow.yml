@@ -25,7 +25,7 @@ jobs:
             -d '{
               "ref": "main",
               "inputs": {
-                "ipa_path": "'"./submitted_test.ipa"'",
+                "ipa_path": "'"./Remote.ipa"'",
                 "certificate_name": "'"iPhone Distribution: Robert Bosch GmbH (JRH3BDU5ZX)"'",
                 "new_bundle_id": "'"com.bosch.prod.remotefiresafety"'",
                 "output_ipa_path": "'"./output.ipa"'",
