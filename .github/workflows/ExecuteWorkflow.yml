@@ -16,7 +16,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: app-assets
-          path: ./assets # directory containing multiple files, binary fie and entitlement.plist
+          path: "./assets" # directory containing multiple files, binary fie and entitlement.plist
           run-id: ${{ github.event.workflow_run.id }}
           
       - name: Trigger Workflow in TestPipe Repository
