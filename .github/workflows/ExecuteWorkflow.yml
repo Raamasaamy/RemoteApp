@@ -17,7 +17,7 @@ jobs:
           REPO_OWNER="Raamasaamy"
           REPO_NAME="TestPipe"
           WORKFLOW_ID="CodeSign.yml"  # Filename of workflow in repo B
-          GITHUB_TOKEN="${{ secrets.REPO_B_TRIGGER_TOKEN }}"  # Store token in A's secrets
+          GITHUB_TOKEN="${{ secrets.TARGET_REPO_PAT }}"  # Store token in A's secrets
 
           curl -X POST \
             -H "Accept: application/vnd.github.v3+json" \
