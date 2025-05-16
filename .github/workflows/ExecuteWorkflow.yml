@@ -12,6 +12,12 @@ jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-shared-artifact
+          path: ./assets # directory containing multiple files, binary fie and entitlement.plist
+          
       - name: Trigger Workflow in Repository B
         run: |
           REPO_OWNER="Raamasaamy"
