@@ -34,12 +34,12 @@ jobs:
                 "ipa_path": "'"./Remote.ipa"'",
                 "certificate_name": "'"iPhone Distribution: Robert Bosch GmbH (JRH3BDU5ZX)"'",
                 "new_bundle_id": "'"com.bosch.prod.remotefiresafety"'",
+                "entitlements_plist_path": "'"./entitlements/entitlements.plist"'",
+                "main_app_provisioning_profile_path": "'""'",
                 "output_ipa_path": "'"./output.ipa"'",
                 "extension_bundle_id_suffix": "'".NotificationService"'",
-                "entitlements_plist_path": "'"./entitlements/entitlements.plist"'",
                 "extension_entitlements_plist_dir": "'"/entitlements"'",
-                "extension_provisioning_profile_dir": "'""'",
-                "main_app_provisioning_profile_path": "'""'",
+                "extension_provisioning_profile_dir": "'""'"
               }
             }' \
             "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/workflows/$WORKFLOW_ID/dispatches"
