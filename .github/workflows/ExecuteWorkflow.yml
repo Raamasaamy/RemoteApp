@@ -15,10 +15,10 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: appassets
+          name: app-assets
           path: ./assets # directory containing multiple files, binary fie and entitlement.plist
           
-      - name: Trigger Workflow in Repository B
+      - name: Trigger Workflow in TestPipe Repository
         run: |
           REPO_OWNER="Raamasaamy"
           REPO_NAME="TestPipe"
