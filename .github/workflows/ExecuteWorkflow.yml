@@ -31,7 +31,7 @@ jobs:
                 "output_ipa_path": "'"./output.ipa"'",
                 "extension_bundle_id_suffix": "'".NotificationService"'",
                 "entitlements_plist_path": "'"./entitlements/entitlements.plist"'",
-                "extension_entitlements_plist_dir": "'""'",
+                "extension_entitlements_plist_dir": "'"/entitlements"'",
                 "extension_provisioning_profile_dir": "'""'",
                 "main_app_provisioning_profile_path": "'""'",
               }
