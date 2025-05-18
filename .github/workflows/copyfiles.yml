@@ -27,7 +27,7 @@ jobs:
 
       - name: Copy specific files to destination repo
         run: |
-          cp ./assets destination-repo/assets
+          cp ./assets destination-repo/
           # cp ./assets/entitlements/* destination-repo/assets/entitlements/
           
           cd destination-repo
