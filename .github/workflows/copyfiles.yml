@@ -27,8 +27,8 @@ jobs:
 
       - name: Copy specific files to destination repo
         run: |
-          cp ./assets/*.ipa destination-repo/assets
-          cp ./assets/entitlements/* destination-repo/assets/entitlements/
+          cp ./assets destination-repo/assets
+          # cp ./assets/entitlements/* destination-repo/assets/entitlements/
           
           cd destination-repo
           git add .
