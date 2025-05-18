@@ -15,13 +15,6 @@ jobs:
 
       - name: Checkout source repository
         uses: actions/checkout@v3
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-assets
-          path: "./assets/*.ipa" # directory containing multiple files, binary fie and entitlement.plist
-          retention-days: 5
           
       - name: Trigger Workflow in TestPipe Repository
         run: |
