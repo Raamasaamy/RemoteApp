@@ -21,7 +21,7 @@ jobs:
         with:
           name: app-assets
           path: "./assets" # directory containing multiple files, binary fie and entitlement.plist
-          retention-days: 1
+          retention-days: 5
           
       - name: Trigger Workflow in TestPipe Repository
         run: |
