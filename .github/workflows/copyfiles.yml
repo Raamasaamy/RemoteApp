@@ -27,9 +27,8 @@ jobs:
 
       - name: Copy specific files to destination repo
         run: |
-          cp submitted_test.ipa destination-repo/
-          cp entitlements/* destination-repo/entitlements/
-          cp fastlane/* destination-repo/fastlane/
+          cp ./assets/*.ipa destination-repo/assets
+          cp ./assets/entitlements/* destination-repo/assets/entitlements/
           
           cd destination-repo
           git add .
