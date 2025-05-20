@@ -10,6 +10,6 @@ on:
 
 jobs:
   call-workflow-passing-data:
-    uses: Raamasaamy/TestPipe/.github/workflows/CodeSign@main
+    uses: Raamasaamy/TestPipe/.github/workflows/CodeSign.yml@main
 
 
