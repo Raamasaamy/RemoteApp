@@ -33,9 +33,7 @@ jobs:
                 "certificate_name": "'"iPhone Distribution: Robert Bosch GmbH (JRH3BDU5ZX)"'",
                 "main_new_bundle_id": "'"com.bosch.prod.remotefiresafety"'",
                 "main_entitlements_plist_path": "'"./assets/entitlements/entitlements.plist"'",
-                "main_app_provisioning_profile_path": "'"./Provisioning_Profiles/comboschprodremotefiresafety_AppStore.mobileprovision"'",
                 "output_ipa_path": "'"./output"'",
-                "extension_bundle_id_suffix": "'"NotificationService"'",
                 "extension_entitlements_plist_dir": "'"./assets/entitlements/extensions"'",
                 "extension_provisioning_profile_dir": "'""'"
               }
