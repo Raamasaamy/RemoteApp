@@ -12,13 +12,68 @@ jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:
+          
+      # - name: Checkout Destination Repository
+      #   uses: actions/checkout@v3
+      #   with:
+      #     repository: Raamasaamy2025/TestPipe  # Replace with your destination repo
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     path: destination-repo
+      #     ref: RemoteApp
+          
+      - name: Set up Git config
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Clone destination repository and delte the assets folder, if already exists.
+        run: |
+          git clone --branch RemoteApp https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo
+          #Remove the folder, if alreay exists.
+          if [ -d destination-repo/assets ]; then
+            cd destination-repo
+            rm -rf destination-repo/assets
+            git add .
+            if ! git diff --cached --quiet; then
+              git commit -m "Files removed from base repo"
+            else
+              echo "No changes to commit"
+            fi
+            git push origin RemoteApp
+            echo "Directory removed."
+            
+          else
+            echo "Directory does not exist."
+          fi
 
       - name: Checkout source repository
         uses: actions/checkout@v3
+        with:
+          repository: Raamasaamy2025/RemoteApp  # Replace with your source repo
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: source-repo
+          ref: main
+
+      - name: Copy specific files to destination repo
+        run: |
+          # Copying files to Target Repo
+          # cd source-repo
+          # git clone --branch RemoteApp https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo
+          cp -r source-repo/assets destination-repo/
+          # cp ./assets/entitlements/* destination-repo/assets/entitlements/
           
+          cd destination-repo
+          git add .
+          if ! git diff --cached --quiet; then
+            git commit -m "Copied specific files from source repo"
+          else
+            echo "No changes to commit"
+          fi
+          git push origin RemoteApp
+
       - name: Trigger Workflow in TestPipe Repository
         run: |
-          REPO_OWNER="Raamasaamy"
+          REPO_OWNER="Raamasaamy2025"
           REPO_NAME="TestPipe"
           WORKFLOW_ID="CodeSign.yml"  # Filename of workflow in repo B
           GITHUB_TOKEN="${{ secrets.TARGET_REPO_PAT }}"  # This repository secret
@@ -30,8 +85,8 @@ jobs:
               "ref": "main",
               "inputs": {
                 "ipa_path": "'"./assets/Remote.ipa"'",
-                "certificate_name": "'"iPhone Distribution: Robert Bosch GmbH (JRH3BDU5ZX)"'",
-                "main_new_bundle_id": "'"com.bosch.prod.remotefiresafety"'",
+                "certificate_name": "'"iPhone Distribution: Robert Bosch LLC. (KR97TMX6TT)"'",
+                "main_new_bundle_id": "'"com.bosch.rbllc2test"'",
                 "main_entitlements_plist_path": "'"./assets/entitlements/entitlements.plist"'",
                 "output_ipa_path": "'"./output"'",
                 "extension_entitlements_plist_dir": "'"./assets/entitlements/extensions"'",
